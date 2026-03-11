@@ -77,11 +77,14 @@
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
  </head>
  <body class="h-full font-body bg-amber-50 text-stone-800 overflow-auto">
-  <div id="app" class="min-h-full w-full flex flex-col"><!-- Header -->
+  <div id="app" class="min-h-full w-full flex flex-col">
+   <!-- Header -->
    <header class="bg-white border-b border-amber-200 shadow-sm sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-     <div class="flex items-center gap-3"><!-- Coffee Cup SVG Logo -->
-      <svg viewbox="0 0 64 64" class="w-12 h-12" fill="none"><!-- Steam lines --> <path d="M20 8 Q22 4 20 0" stroke="#8B5A2B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6">
+     <div class="flex items-center gap-3">
+      <!-- Coffee Cup SVG Logo -->
+      <svg viewbox="0 0 64 64" class="w-12 h-12" fill="none">
+       <!-- Steam lines --> <path d="M20 8 Q22 4 20 0" stroke="#8B5A2B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6">
         <animate attributename="d" values="M20 8 Q22 4 20 0;M20 8 Q18 4 20 0;M20 8 Q22 4 20 0" dur="2s" repeatcount="indefinite" />
        </path> <path d="M28 10 Q30 6 28 2" stroke="#8B5A2B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6">
         <animate attributename="d" values="M28 10 Q30 6 28 2;M28 10 Q26 6 28 2;M28 10 Q30 6 28 2" dur="2.5s" repeatcount="indefinite" />
@@ -94,47 +97,63 @@
        <p class="text-sm text-stone-500">Banco de Questões</p>
       </div>
      </div><button id="btn-add-question" onclick="openAddModal()" class="btn-primary bg-amber-700 hover:bg-amber-800 text-white px-5 py-2.5 rounded-lg font-medium flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg><span>Adicionar Questão</span> </button>
     </div>
    </header><!-- Main Content -->
-   <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-6"><!-- Search & Filter Section -->
+   <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
+    <!-- Search & Filter Section -->
     <div class="bg-white rounded-xl shadow-sm border border-amber-100 p-4 mb-6">
-     <div class="flex flex-col md:flex-row gap-4"><!-- Search Input -->
+     <div class="flex flex-col md:flex-row gap-4">
+      <!-- Search Input -->
       <div class="flex-1 relative">
-       <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+       <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
        </svg><input type="text" id="search-input" placeholder="Buscar questões..." class="w-full pl-10 pr-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" oninput="filterQuestions()">
       </div><!-- Category Filter -->
-      <div class="relative"><select id="filter-category" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todas as Categorias</option> </select>
-       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <div class="relative">
+       <select id="filter-category" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todas as Categorias</option> </select>
+       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
        </svg>
       </div><!-- Subject Filter -->
-      <div class="relative"><select id="filter-subject" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todos os Assuntos</option> </select>
-       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <div class="relative">
+       <select id="filter-subject" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todos os Assuntos</option> </select>
+       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
        </svg>
       </div><!-- Question Type Filter -->
-      <div class="relative"><select id="filter-type" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todos os Tipos</option> <option value="Objetiva">Objetiva</option> <option value="Discursiva">Discursiva</option> <option value="Adaptada">Adaptada</option> </select>
-       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <div class="relative">
+       <select id="filter-type" onchange="filterQuestions()" class="appearance-none bg-white border border-amber-200 rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none cursor-pointer min-w-[180px]"> <option value="">Todos os Tipos</option> <option value="Objetiva">Objetiva</option> <option value="Discursiva">Discursiva</option> <option value="Adaptada">Adaptada</option> </select>
+       <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
        </svg>
       </div>
      </div><!-- Stats Bar -->
-     <div class="mt-4 pt-4 border-t border-amber-100 flex items-center justify-between text-sm text-stone-500"><span id="results-count">0 questões encontradas</span> <button onclick="clearFilters()" class="text-amber-700 hover:text-amber-900 font-medium flex items-center gap-1">
-       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+     <div class="mt-4 pt-4 border-t border-amber-100 flex items-center justify-between text-sm text-stone-500">
+      <span id="results-count">0 questões encontradas</span> <button onclick="clearFilters()" class="text-amber-700 hover:text-amber-900 font-medium flex items-center gap-1">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
        </svg> Limpar Filtros </button>
      </div>
     </div><!-- Questions Grid -->
-    <div id="questions-container" class="grid gap-4"><!-- Questions will be rendered here -->
+    <div id="questions-container" class="grid gap-4">
+     <!-- Questions will be rendered here -->
     </div><!-- Empty State -->
     <div id="empty-state" class="hidden text-center py-16">
-     <svg viewbox="0 0 64 64" class="w-24 h-24 mx-auto mb-4 opacity-40" fill="none"><path d="M8 20 L8 48 Q8 56 16 56 L40 56 Q48 56 48 48 L48 20 Z" fill="#8B5A2B" /> <path d="M12 24 L12 46 Q12 52 18 52 L38 52 Q44 52 44 46 L44 24 Z" fill="#5D3A1A" /> <path d="M48 26 Q60 26 60 38 Q60 50 48 50" stroke="#8B5A2B" stroke-width="5" fill="none" stroke-linecap="round" /> <ellipse cx="28" cy="60" rx="26" ry="4" fill="#D4A574" />
+     <svg viewbox="0 0 64 64" class="w-24 h-24 mx-auto mb-4 opacity-40" fill="none">
+      <path d="M8 20 L8 48 Q8 56 16 56 L40 56 Q48 56 48 48 L48 20 Z" fill="#8B5A2B" /> <path d="M12 24 L12 46 Q12 52 18 52 L38 52 Q44 52 44 46 L44 24 Z" fill="#5D3A1A" /> <path d="M48 26 Q60 26 60 38 Q60 50 48 50" stroke="#8B5A2B" stroke-width="5" fill="none" stroke-linecap="round" /> <ellipse cx="28" cy="60" rx="26" ry="4" fill="#D4A574" />
      </svg>
      <h3 class="font-display text-xl text-stone-600 mb-2">Nenhuma questão cadastrada</h3>
      <p class="text-stone-500 mb-4">Comece adicionando sua primeira questão ao banco</p><button onclick="openAddModal()" class="btn-primary bg-amber-700 hover:bg-amber-800 text-white px-6 py-2.5 rounded-lg font-medium inline-flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg> Adicionar Primeira Questão </button>
     </div><!-- No Results State -->
     <div id="no-results-state" class="hidden text-center py-16">
-     <svg class="w-16 h-16 mx-auto mb-4 text-stone-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+     <svg class="w-16 h-16 mx-auto mb-4 text-stone-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
      </svg>
      <h3 class="font-display text-xl text-stone-600 mb-2">Nenhum resultado encontrado</h3>
      <p class="text-stone-500">Tente ajustar seus filtros ou termos de busca</p>
@@ -149,44 +168,64 @@
   <div id="question-modal" class="hidden fixed inset-0 z-50">
    <div class="modal-backdrop absolute inset-0 bg-black/50" onclick="closeModal()"></div>
    <div class="absolute inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-2xl md:max-h-[90%] overflow-auto">
-    <div class="modal-content bg-white rounded-2xl shadow-2xl overflow-hidden"><!-- Modal Header -->
+    <div class="modal-content bg-white rounded-2xl shadow-2xl overflow-hidden">
+     <!-- Modal Header -->
      <div class="bg-amber-700 text-white px-6 py-4 flex items-center justify-between">
       <h2 id="modal-title" class="font-display text-xl">Adicionar Questão</h2><button onclick="closeModal()" class="p-1 hover:bg-amber-600 rounded-lg transition-colors">
-       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
        </svg></button>
      </div><!-- Modal Body -->
-     <form id="question-form" class="p-6 space-y-5" onsubmit="handleSubmitQuestion(event)"><input type="hidden" id="edit-id" value=""> <!-- Question Text -->
-      <div><label class="block text-sm font-medium text-stone-700 mb-2"> Texto da Questão <span class="text-red-500">*</span> </label> <textarea id="question-text" rows="8" required class="w-full px-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all resize-y" placeholder="Cole ou digite o texto completo da questão aqui..."></textarea>
+     <form id="question-form" class="p-6 space-y-5" onsubmit="handleSubmitQuestion(event)">
+      <input type="hidden" id="edit-id" value=""> <!-- Question Text -->
+      <div>
+       <label class="block text-sm font-medium text-stone-700 mb-2"> Texto da Questão <span class="text-red-500">*</span> </label> <textarea id="question-text" rows="8" required class="w-full px-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all resize-y" placeholder="Cole ou digite o texto completo da questão aqui..."></textarea>
        <p class="mt-1 text-xs text-stone-500">Você pode colar texto com formatação diretamente</p>
       </div><!-- Category -->
-      <div><label class="block text-sm font-medium text-stone-700 mb-2"> Categoria <span class="text-red-500">*</span> </label>
-       <div class="relative"><input type="text" id="question-category" required list="category-list" class="w-full px-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" placeholder="Ex: Matemática, Português, História..."> <datalist id="category-list"></datalist>
+      <div>
+       <label class="block text-sm font-medium text-stone-700 mb-2"> Categoria <span class="text-red-500">*</span> </label>
+       <div class="relative">
+        <input type="text" id="question-category" required list="category-list" class="w-full px-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" placeholder="Ex: Matemática, Português, História..."> <datalist id="category-list"></datalist>
        </div>
        <p class="mt-1 text-xs text-stone-500">Digite uma nova categoria ou selecione uma existente</p>
       </div><!-- Subject -->
-      <div><label class="block text-sm font-medium text-stone-700 mb-2"> Assunto/Objeto de Conhecimento <span class="text-red-500">*</span> </label>
-       <div class="relative"><input type="text" id="question-subject" required list="subject-list" class="w-full px-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" placeholder="Ex: Equações do 2º grau, Interpretação de texto..."> <datalist id="subject-list"></datalist>
+      <div>
+       <label class="block text-sm font-medium text-stone-700 mb-2"> Assunto/Objeto de Conhecimento <span class="text-red-500">*</span> </label>
+       <div class="relative">
+        <input type="text" id="question-subject" required list="subject-list" class="w-full px-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" placeholder="Ex: Equações do 2º grau, Interpretação de texto..."> <datalist id="subject-list"></datalist>
        </div>
        <p class="mt-1 text-xs text-stone-500">Digite um novo assunto ou selecione um existente</p>
       </div><!-- Question Type -->
-      <div><label class="block text-sm font-medium text-stone-700 mb-2"> Tipo de Questão <span class="text-red-500">*</span> </label>
-       <div class="flex gap-3">
-        <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-objetiva" name="question-type" value="Objetiva" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Objetiva</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-discursiva" name="question-type" value="Discursiva" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Discursiva</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-adaptada" name="question-type" value="Adaptada" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Adaptada</span> </label>
+      <div>
+       <label class="block text-sm font-medium text-stone-700 mb-2"> Tipo de Questão <span class="text-red-500">*</span> </label>
+       <div class="flex gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-objetiva" name="question-type" value="Objetiva" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Objetiva</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-discursiva" name="question-type" value="Discursiva" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Discursiva</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" id="type-adaptada" name="question-type" value="Adaptada" required class="w-4 h-4 text-amber-600 border-amber-300 focus:ring-amber-500"> <span class="text-sm text-stone-700">Adaptada</span> </label>
        </div>
-      </div><!-- Image URL -->
-      <div><label class="block text-sm font-medium text-stone-700 mb-2"> Imagem da Questão (Opcional) </label>
-       <div class="space-y-3"><input type="url" id="question-image-url" class="w-full px-4 py-2.5 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" placeholder="Cole a URL completa da imagem (ex: https://exemplo.com/imagem.jpg)">
-        <p class="text-xs text-stone-500">Formatos aceitos: JPG, PNG, GIF. Máximo 5MB. Use apenas URLs públicas.</p><!-- Image Preview -->
+      </div><!-- Image Upload -->
+      <div>
+       <label class="block text-sm font-medium text-stone-700 mb-2"> Imagem da Questão (Opcional) </label>
+       <div class="space-y-3">
+        <div class="relative border-2 border-dashed border-amber-200 rounded-lg p-6 text-center hover:border-amber-400 transition-colors cursor-pointer" onclick="document.getElementById('question-image-file').click()">
+         <svg class="w-8 h-8 mx-auto mb-2 text-stone-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+         </svg>
+         <p class="text-sm text-stone-700 font-medium">Clique para selecionar uma imagem</p>
+         <p class="text-xs text-stone-500 mt-1">ou arraste uma imagem aqui</p><input type="file" id="question-image-file" class="hidden" accept="image/*" onchange="handleImageFileUpload(event)">
+        </div>
+        <p class="text-xs text-stone-500">Formatos: JPG, PNG, GIF. Máximo 5MB.</p><!-- Image Preview -->
         <div id="image-preview-container" class="hidden">
-         <div class="relative inline-block"><img id="image-preview" src="" alt="Preview" class="max-w-full h-auto rounded-lg border border-amber-200" style="max-height: 200px;"> <button type="button" onclick="removeImagePreview()" class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-7 h-7 flex items-center justify-center transition-colors">
-           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+         <div class="relative inline-block">
+          <img id="image-preview" src="" alt="Preview" class="max-w-full h-auto rounded-lg border border-amber-200" style="max-height: 200px;"> <button type="button" onclick="removeImagePreview()" class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-7 h-7 flex items-center justify-center transition-colors">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
            </svg></button>
          </div>
         </div>
        </div>
       </div><!-- Submit Button -->
-      <div class="flex gap-3 pt-4"><button type="button" onclick="closeModal()" class="flex-1 px-4 py-2.5 border border-amber-200 text-stone-700 rounded-lg font-medium hover:bg-amber-50 transition-colors"> Cancelar </button> <button type="submit" id="submit-btn" class="flex-1 btn-primary bg-amber-700 hover:bg-amber-800 text-white px-4 py-2.5 rounded-lg font-medium flex items-center justify-center gap-2"> <span id="submit-text">Salvar Questão</span>
-        <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+      <div class="flex gap-3 pt-4">
+       <button type="button" onclick="closeModal()" class="flex-1 px-4 py-2.5 border border-amber-200 text-stone-700 rounded-lg font-medium hover:bg-amber-50 transition-colors"> Cancelar </button> <button type="submit" id="submit-btn" class="flex-1 btn-primary bg-amber-700 hover:bg-amber-800 text-white px-4 py-2.5 rounded-lg font-medium flex items-center justify-center gap-2"> <span id="submit-text">Salvar Questão</span>
+        <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24">
+         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
         </svg></button>
       </div>
      </form>
@@ -199,13 +238,16 @@
     <div class="modal-content bg-white rounded-2xl shadow-2xl overflow-hidden mx-4">
      <div class="p-6 text-center">
       <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-       <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+       <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
        </svg>
       </div>
       <h3 class="font-display text-xl text-stone-800 mb-2">Excluir Questão?</h3>
       <p class="text-stone-600 mb-6">Esta ação não pode ser desfeita. A questão será removida permanentemente.</p>
-      <div class="flex gap-3"><button onclick="closeDeleteModal()" class="flex-1 px-4 py-2.5 border border-stone-300 text-stone-700 rounded-lg font-medium hover:bg-stone-50 transition-colors"> Cancelar </button> <button onclick="confirmDelete()" id="confirm-delete-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"> <span id="delete-text">Excluir</span>
-        <svg id="delete-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+      <div class="flex gap-3">
+       <button onclick="closeDeleteModal()" class="flex-1 px-4 py-2.5 border border-stone-300 text-stone-700 rounded-lg font-medium hover:bg-stone-50 transition-colors"> Cancelar </button> <button onclick="confirmDelete()" id="confirm-delete-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"> <span id="delete-text">Excluir</span>
+        <svg id="delete-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24">
+         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
         </svg></button>
       </div>
      </div>
@@ -795,5 +837,5 @@
     // Initial render
     filterQuestions();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d836825a3d06d6a',t:'MTc3MjgyMTU2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dacd8ba45464b9c',t:'MTc3MzI1NjA5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
