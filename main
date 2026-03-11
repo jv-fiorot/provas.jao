@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>João Café - Provas</title>
 
-    <!-- Tailwind -->
-    https://cdn.tailwindcss.com/3.4.17</script>
+    <!-- Tailwind CDN correto -->
+    <script src="https://ss.com</script>
+    <script>
+      // Sanity check: ajuda a diagnosticar caso o CDN falhe
+      if (typeof tailwind === 'undefined') {
+        console.error('Tailwind NÃO carregou. Verifique o CDN/Network.');
+      } else {
+        console.log('Tailwind carregado ✓');
+      }
+    </script>
 
     <!-- SDKs da plataforma (ajuste o caminho se necessário) -->
     /_sdk/element_sdk.js</script>
@@ -43,8 +51,6 @@
       .dropdown-menu { animation: dropDown 0.2s ease; }
       @keyframes dropDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-
-    <style>body { box-sizing: border-box; }</style>
 
     <!-- Ícones (Lucide) -->
     https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js</script>
@@ -283,19 +289,3 @@
                   <div class="relative inline-block">
                     <img id="image-preview" src="" alt="Preview" class="max-w-full h-auto rounded-lg border border-amber-200" style="max-height: 200px;">
                     <button type="button" onclick="removeImagePreview()" class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-7 h-7 flex items-center justify-center transition-colors">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="flex gap-3 pt-4">
-              <button type="button" onclick="closeModal()" class="flex-1 px-4 py-2.5 border border-amber-200 text-stone-700 rounded-lg font-medium hover:bg-amber-50 transition-colors">Cancelar</button>
-              <button type="submit" id="submit-btn" class="flex-1 btn-primary bg-amber-700 hover:bg-amber-800 text-white px-4 py-2.5 rounded-lg font-medium flex items-center justify-center gap-2">
-                <span id="submit-text">Salvar Questão</span>
-                <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
